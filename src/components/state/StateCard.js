@@ -8,6 +8,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
@@ -30,7 +31,8 @@ const StartCardWrapper = styled.div`
   }
 
   table th,
-  table td {
+  table td,
+  table span {
     border: none;
     font-size: 12px;
   }
@@ -99,7 +101,22 @@ const StateCard = ({ state, deleteState, setUpdateStates }) => {
                   <TableCell>
                     {Math.round(row.leads_count / (row.plan / 100))}%
                   </TableCell>
-                  <TableCell>{row.zip_code}</TableCell>
+                  {row.zip_codes[0] && (
+                    <TableCell>
+                      <Tooltip
+                        placement="top"
+                        title={row.zip_codes.map((item, index) => (
+                          <span>
+                            {index ? "," : ""}
+                            {item}
+                          </span>
+                        ))}
+                      >
+                        {row.zip_codes[0]}
+                        {row.zip_codes.length > 1 ? "..." : ""}
+                      </Tooltip>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>
