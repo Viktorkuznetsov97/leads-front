@@ -20,7 +20,17 @@ const States = () => {
         <Typography variant="h5" marginBottom="10px" fontWeight="700">
           Create state
         </Typography>
-        <Box display="grid" gridTemplateColumns="1fr 1fr" marginTop="10px">
+        <Box
+          display="grid"
+          gridTemplateColumns="1fr 1fr"
+          marginTop="10px"
+          sx={{
+            "@media (max-width: 900px)": {
+              gridTemplateColumns: "1fr",
+              gap: "15px",
+            },
+          }}
+        >
           <CreateState
             selectedIsoCodes={stateList.map(({ isoCode }) => isoCode)}
             setUpdateStates={setUpdateStates}
@@ -44,6 +54,10 @@ const States = () => {
         gridTemplateColumns="1fr 1fr 1fr"
         gap="20px"
         marginTop="20px"
+        sx={{
+          "@media (max-width: 900px)": { gridTemplateColumns: "1fr 1fr" },
+          "@media (max-width: 600px)": { gridTemplateColumns: "1fr" },
+        }}
       >
         {stateList.map((state) => (
           <StateCard

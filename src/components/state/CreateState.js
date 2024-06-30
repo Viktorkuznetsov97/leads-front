@@ -17,7 +17,16 @@ const CreateState = ({ selectedIsoCodes, setUpdateStates }) => {
   } = useCreateState({ selectedIsoCodes, setUpdateStates });
 
   return (
-    <Box display="flex" flexDirection="column" gap="10px" width="350px">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="10px"
+      maxWidth="350px"
+      width="100%"
+      sx={{
+        "@media (max-width: 900px)": { maxWidth: "100%" },
+      }}
+    >
       <Box
         display="grid"
         gridTemplateColumns="1fr 0.4fr"
